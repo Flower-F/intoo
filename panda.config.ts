@@ -1,20 +1,20 @@
 import { defineConfig } from "@pandacss/dev";
+import { semanticTokens } from "./theme/semantic-tokens";
 
 export default defineConfig({
-  // Whether to use css reset
-  preflight: true,
-
-  // Where to look for your css declarations
+  preflight: true, // Whether to use css reset
+  jsxFramework: "react",
   include: ["./src/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
-
-  // Files to exclude
   exclude: [],
-
-  // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      semanticTokens,
+    },
   },
-
-  // The output directory for your css system
+  staticCss: {
+    recipes: {
+      button: [{ variant: ["*"], size: ["*"] }],
+    },
+  },
   outdir: "styled-system",
 });
