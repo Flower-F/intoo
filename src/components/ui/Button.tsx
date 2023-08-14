@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
+import { ark } from "@ark-ui/react";
 import { styled } from "../../../styled-system/jsx";
 import { RecipeVariantProps, cva } from "../../../styled-system/css";
 
@@ -43,7 +44,6 @@ const buttonStyle = cva({
         },
       },
       outline: {
-        backgroundColor: "background",
         border: "solid",
         borderWidth: 1,
         borderColor: "input",
@@ -100,9 +100,7 @@ const buttonStyle = cva({
 });
 
 export type ButtonVariantProps = RecipeVariantProps<typeof buttonStyle>;
-export type ButtonProps = ButtonVariantProps & ComponentPropsWithoutRef<"button">;
+export type ButtonProps = ButtonVariantProps & ComponentPropsWithoutRef<typeof ark.button>;
 
-export const Button = styled("button", buttonStyle);
+export const Button = styled(ark.button, buttonStyle);
 Button.displayName = "Button";
-
-// TODO: asChild prop support
